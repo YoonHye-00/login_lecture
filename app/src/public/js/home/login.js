@@ -21,7 +21,16 @@ function login(){
         },
         body : JSON.stringify(req)  //req를 문자열로 바꿔줌
     }).then((res) => res.json())
-      .then((res) => console.log(res));  //반환된 promise에 then으로 또 접근
+      .then((res) => {
+          if(res.success){  //success 값이 true이면
+            location.href = "/";
+          } else {
+              alert(res.msg);
+          }
+      })  //반환된 promise에 then으로 또 접근
+      .catch((err) => {
+          console.error(new Error("로그인 중 에러 발생"));  //Error: 로그인 중 에러 발생
+      });
 }
 
 
