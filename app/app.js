@@ -5,10 +5,10 @@ const express = require('express');
 const app = express();
 
 // 라우팅
-const home = require("./routes/home")
+const home = require("./src/routes/home");
 
 // 앱 세팅
-app.set("views", "./views");    //view 폴더 지정
+app.set("views", "./src/views");    //view 폴더 지정
 app.set("view engine", "ejs");  //views 폴더 안에 생성될 html코드를 해석할 엔진 -> ejs
 
 
