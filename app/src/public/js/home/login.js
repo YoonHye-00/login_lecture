@@ -12,8 +12,15 @@ function login(){
     const req = {
         id : id.value,
         password : password.value
-    }
-    console.log(req);
+    };
+    //fetch를 통해 req 전달
+    fetch("/login", {
+        method : "POST",
+        headers: {  //내가 전달하는 데이터가 json 데이터라고 알려줘야함
+            "Content-Type" : "application/json" //데이터 타입 명시
+        },
+        body : JSON.stringify(req)  //req를 문자열로 바꿔줌
+    });
 }
 
 
