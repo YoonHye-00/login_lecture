@@ -21,6 +21,18 @@ class UserStorage {     //class 자체에서 users에 접근하기 위해 static
         }, {});  //{} -> newUsers 초기값                                                      
         return newUsers;
     }
+
+    static getUserInfo(id) {    //id에 해당하는 id, password, name을 object형태로 return해주는 함수
+        const users = this.#users;
+        const idx = users.id.indexOf(id);
+        const usersKeys = Object.keys(users);   // => [id, password, name]
+        const userInfo = usersKeys.reduce((newUser, info) => {
+            newUser[info] = users[info][idx];
+            return newUsers;
+        }, {})
+
+        return userInfo;
+    }
 }
 
 module.exports = UserStorage;

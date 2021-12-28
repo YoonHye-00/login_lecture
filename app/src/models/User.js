@@ -8,8 +8,17 @@ class User{
     }
 
     login() {
-        const { i, password } = UserStorage.getUsers("id", "password");
-        console.log(i, password);
+        const body = this.body
+        const { id, password } = UserStorage.getUserInfo(body.id);  //id와 password만 받아옴 (id, password 이거 키 값이 반환값의 키 값과 동일해야함)
+        
+        if(id){ //사용자가 입력한 id가 UserStorage에 존재하면
+            if (password === body.password) {     // === : 자료형 변환 없이 두 피연산자가 엄격하게 같은지 확인
+                return {success : true};
+            }
+            return {success : false, msg: "비밀번호가 틀렸습니다."};
+        }
+        return {success : false, msg: "존재하지 않는 아이디입니다."};
+        
     }
 }
 
