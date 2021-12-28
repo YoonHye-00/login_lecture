@@ -22,7 +22,13 @@ const process = {
     login : (req,res) => {
         const user = new User(req.body);
         const response = user.login();
-        return res.json(responese); //response를 클라이언트에게 json형태로 응답해줌.
+        return res.json(response); //response를 클라이언트에게 json형태로 응답해줌.
+     },
+
+     register : (req,res) => {
+        const user = new User(req.body);
+        const response = user.register();
+        return res.json(response); //response를 클라이언트에게 json형태로 응답해줌.
      }
 }
 

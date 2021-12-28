@@ -12,15 +12,19 @@ registerButton.addEventListener("click", register);
 registerButton.addEventListener("keypress", (e) => {
     if(e.key == "Enter"){register();}
 });
-password.addEventListener("keypress", (e) => {
+confirmPassword.addEventListener("keypress", (e) => {
     if(e.key == "Enter"){register();}
 });
 
 function register(){
+    if (!id.value) return alert("아이디를 입력해주세요. ");   //id 값이 비어있으면 아래 수행 x
+    //confirmPassword 값은 server로 보낼 필요가 없음. front에서 처리!!
+    if (password.value !== confirmPassword.value) return alert("비밀번호가 일치하지 않습니다.");
+        
     const req = {
         id : id.value,
+        name : name.value,
         password : password.value,
-        confirmPassword : confirmPassword.value
     };
     //fetch를 통해 서버로 req 전달. promise타입의 객체를 반환함
     fetch("/register", {

@@ -28,10 +28,19 @@ class UserStorage {     //class 자체에서 users에 접근하기 위해 static
         const usersKeys = Object.keys(users);   // => [id, password, name]
         const userInfo = usersKeys.reduce((newUser, info) => {
             newUser[info] = users[info][idx];
-            return newUsers;
-        }, {})
+            return newUser;
+        }, {});
 
         return userInfo;
+    }
+
+    static save(userInfo) {     //이 코드는 서버가 재가동 되기 전까지는 문제가 없지만 서버가 재가동되면 #users가 다시 원래대로 초기화된다는 문제점이 있음.
+        const users = this.#users;
+        users.id.push(userInfo.id);
+        users.name.push(userInfo.name);
+        users.password.push(userInfo.password);
+        console.log(users);
+        return {success : true};
     }
 }
 
