@@ -4,7 +4,7 @@
 
 const id = document.querySelector("#id"),   //id가 id인 태그를 가져옴
     password = document.querySelector("#password"), //id가 password인 태그를 가져옴
-    loginButton = document.querySelector("button"); //button 태그를 가져옴
+    loginButton = document.querySelector("#button"); //button 태그를 가져옴
 
 loginButton.addEventListener("click", login);   //로그인 버튼이 눌리면 login 함수 실행
 loginButton.addEventListener("keypress", (e) => {
